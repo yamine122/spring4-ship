@@ -27,7 +27,7 @@ public class UserController {
 	@GetMapping("/info")
 	public String findUserByUId(@RequestParam("uid") String uid , 
 				@RequestParam("upw") String upw) {
-		
+		//test
 		return "home";
 	}	
 		
