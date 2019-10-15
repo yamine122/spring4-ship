@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.ship.web.domains.CompanyDTO;
+import com.ship.web.domains.UserDTO;
 @Repository
-public interface CompanyMapper {
-	public boolean insertEmp(CompanyDTO param);
-	public CompanyDTO selectByEmpnoEname(CompanyDTO param);
-	public List<CompanyDTO> findByTable(CompanyDTO param);
+public interface UserMapper {
+	public boolean insertEmp(UserDTO param);
+	public int countUser();
+	public UserDTO selectByEmpnoEname(UserDTO param);
+	public List<UserDTO> findByTable(UserDTO param);
 }

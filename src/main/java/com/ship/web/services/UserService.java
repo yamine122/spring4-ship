@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ship.web.domains.CompanyDTO;
+import com.ship.web.domains.UserDTO;
 @Component
-public interface CompanyService {
+public interface UserService {
 
-	public boolean join(CompanyDTO param);
-	public CompanyDTO login(CompanyDTO param);
-	public List<CompanyDTO> search(CompanyDTO param);
+	public boolean join(UserDTO param);
+	public int countUser();
+	public UserDTO login(UserDTO param);
+	public List<UserDTO> search(UserDTO param);
 }
