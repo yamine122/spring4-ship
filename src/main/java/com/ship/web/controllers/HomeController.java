@@ -20,13 +20,10 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@Autowired UserServiceImpl userService;
-	
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome {}.", "HomeController");
-		int count = userService.countUser();
-		model.addAttribute("count", count );
+		
 		return "home";
 	}
 	
