@@ -10,11 +10,11 @@ import com.ship.web.mappers.CompanyMapper;
 import com.ship.web.services.CompanyService;
 @Service
 public class CompanyServiceImpl implements CompanyService{
-	@Autowired CompanyMapper mapper;
+	@Autowired CompanyMapper CompanyMapper;
 	
 	@Override
 	public boolean join(CompanyDTO param) {
-		
+		System.out.println("서비스조인!"+param.toString());
 		return false;
 	}
 
