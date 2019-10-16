@@ -1,47 +1,37 @@
-var app = (()=>{
-	return {
-		init : (ctx)=>{
-			empService.login(ctx);
-			empService.join(ctx);
-			empService.move_join(ctx);
+"use strict"
+var app = app || {};
+app = (()=>{
+	const WEHN_ERR = '호출하는 JS 파일을 찾을 수 없습니다.';
+	let _,js,authjs;
+	let run =x=> $.getScript(x+'/resources/js/cmm/router.js',
+			()=>{$.extend(new Session(x));
+			onCreate()
+	});
+	let init =()=>{
+		_ = $.ctx();
+		js = $.js();
+		authjs = js+'/cmm/auth.js';
+		
+	}
+	let onCreate =()=>{
+		init()
+		$.when(
+			$.getScript(authjs)
+		 )
+		 .done(()=>{
+			 auth.onCreate()
+		 }
 			
-		}
-	};
+		 )
+		 .fail(()=>{
+			 alert(WEHN_ERR)
+		 }
+			
+		 )
+	}
+	return {run : run}
+	
 })();
-var empService = (()=>{
-	return {
-		login: (ctx)=>{
-			$('#login_btn').click(()=>{
-				if($('#login_userdept').val()==='' || 
-						$('#login_username').val()===''|| 
-						 	$('#login_userpass').val()==='' ){
-					alert('필수값이 없습니다.');
-				}else{
-					alert('입력한 아이디 값: '+$('#login_username').val());
-					$('#login_form').attr('action', '/jee-company/company.do' );
-					$('#login_form').submit();	
-				}
-				
-			});
-		},
-		join: (ctx)=>{
-			$('#join_form_button').click(()=>{
-		            if($('#join_username').val()==='' ||
-		                  $('#join_userpass').val()===''){
-		               alert('필수값이 없습니다.');
-		            }else{
-		               alert('입력한 아이디 값: '+$('#join_username').val());
-		               $('#join_form').attr('action', ctx+'/company.do');
-		               $('#join_form').attr('method','POST')
-		               $('#join_form').submit();
-		            }
-			});
-		},
-		move_join: (ctx)=>{
-		$('#a_join').click(()=>{
-			alert('회원가입 이동');
-			location.assign(ctx+'/facade.do?action=move&page=join');
-		});
-		}
-		};
-})();
+
+//$.getScript(x+'/resources/js/cmm/router.js' 스크립트파일 $.getScript(,)=> << 원래있던함수
+//()=>{$.extend(new Session(x))} 콜백함수
