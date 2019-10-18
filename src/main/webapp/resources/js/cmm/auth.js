@@ -21,7 +21,7 @@ auth = (()=>{
 		})
 	}
 	let setContentView =()=>{
-		
+		login()
 	}
 	let join =()=>{
 		$('head').html(auth_vue.join_head())
