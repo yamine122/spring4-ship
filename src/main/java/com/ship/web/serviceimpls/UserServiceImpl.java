@@ -14,19 +14,19 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public boolean join(UserDTO param) {
-		System.out.println("서비스조인!"+param.toString());
-		return false;
+		
+		return userMapper.insertUser(param);
 	}
-	@Override
+	/*@Override
 	public int countUser() {
 		// TODO Auto-generated method stub
 		return userMapper.countUser();
-	}
+	}*/
 
 	@Override
 	public UserDTO login(UserDTO param) {
 		
-		return null;
+		return userMapper.selectUserById(param);
 	}
 
 	@Override

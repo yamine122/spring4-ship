@@ -31,9 +31,10 @@ auth = (()=>{
             href : '#',
             click : e=>{
             	e.preventDefault();
-            	let data = {uId : $('#userid').val(),
-            			uPw : $('#password').val()}
-            	alert('전송아이디 :'+data.uId)
+            	let data = {uid : $('#uid').val(),
+            			upw : $('#upw').val(),
+            			uname : $('#uname').val()}
+            	alert('전송아이디 :'+data.uid)
             	$.ajax({
             		url : _+'/user/join',
 			    	type : 'POST',
@@ -41,7 +42,7 @@ auth = (()=>{
 			    	data : JSON.stringify(data),
 			    	contentType : 'application/json',
 			    	success : d =>{
-			    		alert('AJAX 성공 아이디: '+d.uId+', 성공비번: '+d.uPw)
+			    		alert('AJAX 성공 아이디: '+d.uid+', 성공비번: '+d.upw)
 			    		login()
 			    	},
 			    	error : e=>{
@@ -65,8 +66,8 @@ auth = (()=>{
         	text : "Sign in",
         	click : e => {
         		e.preventDefault()
-        		let data = {uId : $('#userid').val(),
-            			uPw : $('#password').val()}
+        		let data = {uid : $('#uid').val(), upw : $('#upw').val(),
+        					uname : $('#uname').val()}
         		$.ajax({
             		url : _+'/user/login',
 			    	type : 'POST',
@@ -74,12 +75,14 @@ auth = (()=>{
 			    	data : JSON.stringify(data),
 			    	contentType : 'application/json',
 			    	success : d =>{
-			    		alert('AJAX 성공 아이디: '+d.uId+', 성공비번: '+d.uPw)
+			    		alert(d.uname+',님환영합니다 ')
 			    		
+			    	},
+			    	error : e =>{
+			    		alert('ajxa실패')
 			    	}
 			    	
             	})
-        		
         		
         	}
         })

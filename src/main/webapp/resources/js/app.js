@@ -32,6 +32,5 @@ app = (()=>{
 	return {run}
 	
 })();
-
 //$.getScript(x+'/resources/js/cmm/router.js' 스크립트파일 $.getScript(,)=> << 원래있던함수
 //()=>{$.extend(new Session(x))} 콜백함수
